@@ -3,16 +3,20 @@ package org.demre.ei8razasperros.data.remote
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RazaRetrofit {
-    companion object {
-        private const val URL_BASE = "https://dog.ceo/api/"
+class PerrosRetrofit {
 
-        fun getRetrofitRaza(): RazaAPI {
+    companion object{
+
+        private const val BASE_URL = "https://dog.ceo/api/"
+
+        fun gesRetroFitAves(): PerrosApi{
+
             val mRetrofit = Retrofit.Builder()
-                .baseUrl(URL_BASE)
+                .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-            return mRetrofit.create(RazaAPI::class.java)
+
+            return mRetrofit.create(PerrosApi::class.java)
         }
     }
 }

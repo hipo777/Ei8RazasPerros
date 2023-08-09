@@ -6,19 +6,23 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import org.demre.ei8razasperros.data.Repositorio
 import org.demre.ei8razasperros.data.local.RazaDatabase
-import org.demre.ei8razasperros.data.remote.RazaRetrofit
+import org.demre.ei8razasperros.data.remote.PerrosRetrofit
 
-class RazaViewModel (application: Application): AndroidViewModel(application) {
+class RazaViewModel(application: Application): AndroidViewModel(application) {
+
     private val repositorio: Repositorio
 
+    fun razaLiveData() = repositorio.obtenerRazaEntentity()
+
     init {
-        val api = RazaRetrofit.getRetrofitRaza()
+        val api = PerrosRetrofit.gesRetroFitAves()
         val razaDatabase = RazaDatabase.getDatabase(application).getRazaDao()
-        repositorio = Repositorio(api, razaDatabase)
+        repositorio = Repositorio(api,razaDatabase)
     }
 
     fun getAllRazas() = viewModelScope.launch {
         repositorio.getRazas()
     }
+
 
 }
