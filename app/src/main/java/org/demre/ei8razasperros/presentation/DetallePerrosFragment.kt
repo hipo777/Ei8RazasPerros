@@ -28,15 +28,19 @@ class DetallePerrosFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDetallePerrosBinding.inflate(layoutInflater, container, false)
-        //initAdapter()
+        initAdapter()
         razaViewModel.getDetallePerroVM(param1.toString())
         return binding.root
     }
 
     private fun initAdapter() {
-
+        val adapter = AdapterDetalle()
+        binding.recyclerViewDetalle.adapter = adapter
+        razaViewModel.detalleLiveData(param1.toString()).observe(viewLifecycleOwner) {
+            adapter.setDataDetalle(it)
+        }
     }
 
 
