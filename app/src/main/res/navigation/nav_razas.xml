@@ -9,5 +9,14 @@
         android:id="@+id/listadoRazas"
         android:name="org.demre.ei8razasperros.presentation.ListadoRazas"
         android:label="fragment_listado_razas"
-        tools:layout="@layout/fragment_listado_razas" />
+        tools:layout="@layout/fragment_listado_razas" >
+        <action
+            android:id="@+id/action_listadoRazas_to_detallePerrosFragment"
+            app:destination="@id/detallePerrosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detallePerrosFragment"
+        android:name="org.demre.ei8razasperros.presentation.DetallePerrosFragment"
+        android:label="fragment_detalle_perros"
+        tools:layout="@layout/fragment_detalle_perros" />
 </navigation>

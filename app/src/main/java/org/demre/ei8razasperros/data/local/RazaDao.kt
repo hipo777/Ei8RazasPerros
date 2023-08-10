@@ -14,4 +14,13 @@ interface RazaDao {
     @Query("Select * from tabla_razas order by raza ASC")
     fun getRazas(): LiveData<List<RazaEntity>>
 
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE )
+    suspend fun insertDetallePerro(razaDetalleEntity: RazaDetalleEntity)
+
+    @Query("Select * from tablaRazasDetalle where razaDetalle like :id")
+    fun getRazaDetalle(id: String): LiveData<List<RazaDetalleEntity>>
+
+
+
 }

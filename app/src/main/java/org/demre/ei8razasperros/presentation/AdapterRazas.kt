@@ -1,8 +1,11 @@
 package org.demre.ei8razasperros.presentation
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import org.demre.ei8razasperros.R
 import org.demre.ei8razasperros.data.local.RazaEntity
 import org.demre.ei8razasperros.databinding.ItemRazasBinding
 
@@ -34,8 +37,16 @@ class AdapterRazas : RecyclerView.Adapter<AdapterRazas.ItemRazasViewHolder>() {
 
     class ItemRazasViewHolder(val razasVistas: ItemRazasBinding): RecyclerView.ViewHolder(razasVistas.root) {
 
-        fun bind(raza: RazaEntity){
+        fun bind(raza:RazaEntity){
             razasVistas.tvRaza.text = raza.raza
+
+            razasVistas.cvRazas.setOnClickListener{
+                val bundle = Bundle()
+                bundle.putString("id", raza.raza)
+
+                Navigation.findNavController(razasVistas.root).navigate(R.id.action_listadoRazas_to_detallePerrosFragment, bundle)
+            }
+
         }
 
     }

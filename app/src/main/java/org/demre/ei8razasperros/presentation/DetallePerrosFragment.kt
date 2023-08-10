@@ -6,17 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import org.demre.ei8razasperros.databinding.FragmentListadoRazasBinding
+import org.demre.ei8razasperros.databinding.FragmentDetallePerrosBinding
 
-class ListadoRazas : Fragment() {
+private const val ARG_PARAM1 = "id"
 
-    lateinit var binding: FragmentListadoRazasBinding
+class DetallePerrosFragment : Fragment() {
+
+    lateinit var binding: FragmentDetallePerrosBinding
     private val razaViewModel: RazaViewModel by activityViewModels()
+
+
+    private var param1: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-
+            param1 = it.getString(ARG_PARAM1)
         }
     }
 
@@ -24,19 +29,14 @@ class ListadoRazas : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentListadoRazasBinding.inflate(layoutInflater, container, false)
-        initAdapter()
-        razaViewModel.getAllRazas()
+        binding = FragmentDetallePerrosBinding.inflate(layoutInflater, container, false)
+        //initAdapter()
+        razaViewModel.getDetallePerroVM(param1.toString())
         return binding.root
     }
 
     private fun initAdapter() {
-        val adapter = AdapterRazas()
 
-        binding.recyclerView.adapter = adapter
-        razaViewModel.razaLiveData().observe(viewLifecycleOwner){
-            adapter.setData(it)
-        }
     }
 
 
