@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "org.demre.ei8razasperros"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "org.demre.ei8razasperros"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -53,8 +53,8 @@ dependencies {
     //ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
     //Navigation
-    implementation ("androidx.navigation:navigation-fragment-ktx:2.6.0")
-    implementation ("androidx.navigation:navigation-ui-ktx:2.6.0")
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.7.0")
+    implementation ("androidx.navigation:navigation-ui-ktx:2.7.0")
     //Coil
     implementation ("io.coil-kt:coil:2.4.0")
 
@@ -64,6 +64,16 @@ dependencies {
     implementation ("androidx.room:room-ktx:$roomVersion")
     annotationProcessor ("androidx.room:room-compiler:$roomVersion")
     ksp ("androidx.room:room-compiler:$roomVersion")
+
+    //Testear
+    val mockitoCoreVersion = "3.3.3"
+    testImplementation ("org.mockito:mockito-core:$mockitoCoreVersion")
+    val archCoreTest = "2.2.0"
+    testImplementation ("androidx.arch.core:core-testing:$archCoreTest")
+    val coroutinesTest = "1.7.1"
+    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesTest")
+    val mockWebserverVersion = "4.7.2"
+    testImplementation ("com.squareup.okhttp3:mockwebserver:$mockWebserverVersion")
 
 
     testImplementation("junit:junit:4.13.2")

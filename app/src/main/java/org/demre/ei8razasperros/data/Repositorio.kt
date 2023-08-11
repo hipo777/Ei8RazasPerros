@@ -17,8 +17,8 @@ class Repositorio(private val perrosApi: PerrosApi,private val razaDao: RazaDao)
             val message = response.body()!!.message// solo scando la parte de message, sin stattus
             val keys = message.keys
 
-            keys.forEach{
-                val razaEntity = RazaEntity(it)
+            keys.forEach{raza->
+                val razaEntity = raza.toRazaEntity()
                 razaDao.insertRaza(razaEntity)
             }
 
@@ -31,8 +31,8 @@ class Repositorio(private val perrosApi: PerrosApi,private val razaDao: RazaDao)
     suspend fun getDetallePerro(id: String){
         val response = perrosApi.getDetallePerro(id)
         if(response.isSuccessful){
-            response.body()!!.message.forEach{
-                val razaDetalleEntity = RazaDetalleEntity(id,it)
+            response.body()!!.message.forEach{url->
+                val razaDetalleEntity = url.toEntity(id) //transformando para realizar TEST(del remoto al entity)
                 razaDao.insertDetallePerro(razaDetalleEntity)
             }
 
