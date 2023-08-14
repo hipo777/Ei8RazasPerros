@@ -66,14 +66,18 @@ dependencies {
     ksp ("androidx.room:room-compiler:$roomVersion")
 
     //Testear
-    val mockitoCoreVersion = "3.3.3"
-    testImplementation ("org.mockito:mockito-core:$mockitoCoreVersion")
-    val archCoreTest = "2.2.0"
-    testImplementation ("androidx.arch.core:core-testing:$archCoreTest")
-    val coroutinesTest = "1.7.1"
-    testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesTest")
-    val mockWebserverVersion = "4.7.2"
-    testImplementation ("com.squareup.okhttp3:mockwebserver:$mockWebserverVersion")
+    //val mockitoCoreVersion = "3.3.3"
+    //testImplementation ("org.mockito:mockito-core:$mockitoCoreVersion")
+    //val archCoreTest = "2.2.0"
+    //testImplementation ("androidx.arch.core:core-testing:$archCoreTest")
+    //val coroutinesTest = "1.7.1"
+    //testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesTest")
+    //val mockWebserverVersion = "4.7.2"
+    //testImplementation ("com.squareup.okhttp3:mockwebserver:$mockWebserverVersion")
+    androidTestImplementation ("androidx.arch.core:core-testing:2.2.0")
+    androidTestImplementation ("androidx.room:room-testing:$roomVersion")
+    androidTestImplementation ("androidx.test.ext:truth:1.5.0")
+    testImplementation ("androidx.test.ext:truth:1.5.0")
 
 
     testImplementation("junit:junit:4.13.2")
